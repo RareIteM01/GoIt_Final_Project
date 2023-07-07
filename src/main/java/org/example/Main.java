@@ -12,7 +12,7 @@ public class Main {
 
         ComputerCity computerCity = new ComputerCity();
 
-        ResultListСity resultList = new ResultListСity();
+        ResultListCity resultList = new ResultListCity();
 
         while (!theEnd) {
             Scanner scanner = new Scanner(System.in);
@@ -22,7 +22,7 @@ public class Main {
             if (resultList.addToResultCity(city).equals("Incorrect city")) {
                 continue;
             }
-            ;
+
             resultList.addToResultCity(city);
             //пошук в компютері усіх міст, які підходять на кінцеву букву введеного міста
             List<String> findCitiesInComputerList = computerCity.getCity(city);
