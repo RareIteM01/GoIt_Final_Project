@@ -11,7 +11,7 @@ import java.util.List;
 
 
 
-class ResultListCity {
+public class ResultListCity {
     public static int humanScore=0;
     public static int computerScore=0;
     private LinkedList<String> resultList = new LinkedList<>();
