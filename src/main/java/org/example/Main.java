@@ -7,6 +7,7 @@ public class Main {
     public static boolean theEnd = false;
     public static String winner = "You win";
 
+
     public static void main(String[] args) {
 
         ComputerCity computerCity = new ComputerCity();
