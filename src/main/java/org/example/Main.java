@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Main {
     public static boolean theEnd = false;
-    public static boolean isCity = true;
     public static String winner = "You win";
 
     public static void main(String[] args) {
@@ -31,9 +30,9 @@ public class Main {
             boolean isFind = resultList.addCityToCompList(findCitiesInComputerList);
             if (!isFind) {
                 theEnd = true;
+                System.out.println(winner);
                 scanner.close();
             }
-            System.out.println(winner);
             System.out.println("resultList = " + resultList.getResultList());
         }
     }

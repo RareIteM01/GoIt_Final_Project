@@ -9,8 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.example.Main.isCity;
-import static org.example.Main.winner;
+
 
 class ResultListCity {
     private LinkedList<String> resultList = new LinkedList<>();
@@ -49,9 +48,7 @@ class ResultListCity {
             return "Computer wins!";
         } else if (getResultList().size() > 1 && !isFirstLetterCorrect(city, getResultList().getLast())) {
             return "Incorrect city";
-        } else if (!isCity) {
-            return "It's not a city";
-        } else if (!isRealCity(city)) {
+        }  else if (!isRealCity(city)) {
             return "Not a real city";
         } else {
             addToList(city);
