@@ -68,7 +68,7 @@ class ResultListCity {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.contains("\"city\":\"" + city + "\"")) {
+                if (line.contains("\"name\":\"" + city + "\"")) {
                     return true;
                 }
             }
