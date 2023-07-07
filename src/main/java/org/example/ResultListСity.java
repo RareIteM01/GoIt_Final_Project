@@ -12,6 +12,8 @@ import java.util.List;
 
 
 class ResultListCity {
+    public static int humanScore=0;
+    public static int computerScore=0;
     private LinkedList<String> resultList = new LinkedList<>();
 
     public LinkedList<String> getResultList() {
@@ -29,8 +31,8 @@ class ResultListCity {
     public boolean addCityToCompList(List<String> findCitiesInComputerList) {
         for (String compCity : findCitiesInComputerList) {
             if (!resultList.contains(compCity)) {
+                computerScore++;
                 addToList(compCity);
-                System.out.println(compCity);
                 return true;
             }
         }
@@ -52,6 +54,7 @@ class ResultListCity {
             return "Not a real city";
         } else {
             addToList(city);
+            humanScore++;
             return city;
         }
     }
