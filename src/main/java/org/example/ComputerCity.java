@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class ComputerCity {
     private final List<String> computerCity = new LinkedList<>(
-            Arrays.asList("Львів", "Київ", "Одеса", "Харків", "Вінниця", "Олешки", "Вроцлав", "Подільск")
+            Arrays.asList("Львів", "Київ", "Одеса", "Харків", "Вінниця", "Олешки", "Вроцлав", "Подільск", "Alupka", "Kyiv", "Alushta", "Vynyza")
     );
 
 

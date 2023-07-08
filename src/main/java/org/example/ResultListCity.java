@@ -1,21 +1,13 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
 
-public class ResultListCity {
-    public static final String JSON_URL = "https://raw.githubusercontent.com/RareIteM01/GoIt_Final_Project/main/ukrainian_cities.json";
+class ResultListCity {
     public static int humanScore = 0;
     public static int computerScore = 0;
     private LinkedList<String> resultList = new LinkedList<>();
-
 
     private void addToList(String city) {
         resultList.add(city);
@@ -57,21 +49,7 @@ public class ResultListCity {
     }
 
     private boolean isRealCity(String city) {
-        try {
-
-            InputStream inputStream = new URL(JSON_URL).openStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.contains("\"name\":\"" + city + "\"")) {
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
+        return resultList.contains(city);
     }
 
     public LinkedList<String> getResultList() {
