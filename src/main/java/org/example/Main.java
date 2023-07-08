@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static boolean theEnd = false;
-    public static String winner = "You win";
+    public static final String WINNER = "You win";
 
 
     public static void main(String[] args) {
+        boolean theEnd = false;
 
         ComputerCity computerCity = new ComputerCity();
 
@@ -18,8 +18,10 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String city = scanner.nextLine();
 
-            //додавання юзером. Якщо юзер вводить слово, яке не починається на букву, яка є в кінці останнього слова, то цикл пропускає код.
+            //додавання юзером. Якщо юзер вводить слово, яке не починається на букву,
+            // яка є в кінці останнього слова, то цикл пропускає код.
             if (resultList.addToResultCity(city).equals("Incorrect city")) {
+
                 continue;
             }
 
@@ -31,7 +33,7 @@ public class Main {
             boolean isFind = resultList.addCityToCompList(findCitiesInComputerList);
             if (!isFind) {
                 theEnd = true;
-                System.out.println(winner);
+                System.out.println(WINNER);
                 scanner.close();
             }
             System.out.println("resultList = " + resultList.getResultList());
