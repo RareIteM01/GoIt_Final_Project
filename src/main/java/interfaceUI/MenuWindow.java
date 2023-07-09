@@ -13,9 +13,7 @@ import java.util.List;
 public class MenuWindow extends JFrame {
 	private JTextField cityTextField;
 	private JLabel computerResponseResultList;
-
 	private JButton makeMoveButton;
-
 	private ComputerCity computerCity;
 	private ResultListCity resultList;
 
@@ -51,7 +49,7 @@ public class MenuWindow extends JFrame {
 		String city = cityTextField.getText();
 
 		String result = resultList.addToResultCity(city);
-		if (result.equals("Місто повинно починатись на літеру, яка є останньою в останньому слові списку")  || result.equals("Місто вже є у списку, спробуйте інше")) {
+		if (result.equals("Місто повинно починатись на літеру, яка є останньою в останньому слові списку") || result.equals("Місто вже є у списку, спробуйте інше") || result.equals("Not a real city")) {
 			JOptionPane.showMessageDialog(this, result, "Помилка", JOptionPane.ERROR_MESSAGE);
 		} else if (result.equals("Computer wins!")) {
 			showGameResult("Комп'ютер переміг!");
@@ -69,9 +67,8 @@ public class MenuWindow extends JFrame {
 				computerResponseResultList.setText(stringBuilder.toString());
 			}
 		}
-				cityTextField.setText("");
+		cityTextField.setText("");
 	}
-
 
 
 	private void showGameResult(String message) {
