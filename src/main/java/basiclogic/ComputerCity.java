@@ -1,4 +1,4 @@
-package org.example;
+package basiclogic;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class ComputerCity {
     private final List<String> computerCity = new LinkedList<>(
-            Arrays.asList("Львів", "Київ", "Одеса", "Харків", "Вінниця", "Олешки", "Вроцлав", "Подільск", "Alupka", "Kyiv", "Alushta", "Vynyza")
+            Arrays.asList("Львів", "Київ", "Одеса", "Харків", "Вінниця", "Олешки", "Вроцлав", "Подільск", "Ямпіл")
     );
 
 

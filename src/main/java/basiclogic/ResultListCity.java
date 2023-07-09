@@ -1,31 +1,29 @@
-package org.example;
+package basiclogic;
 
 import java.util.LinkedList;
 import java.util.List;
 
 
-class ResultListCity {
+public class ResultListCity {
     public static int humanScore = 0;
     public static int computerScore = 0;
-    private LinkedList<String> resultList = new LinkedList<>();
+    public LinkedList<String> resultList = new LinkedList<>();
 
-    private void addToList(String city) {
-        resultList.add(city);
-    }
 
     private boolean isExistInList(String city) {
-        return resultList.stream().anyMatch(i -> i.equalsIgnoreCase(city));
+        if(resultList.size()!=0) return resultList.stream().anyMatch(i -> i.equalsIgnoreCase(city));
+        return false;
     }
 
-    public boolean addCityToCompList(List<String> findCitiesInComputerList) {
+    public String addCityToCompList(List<String> findCitiesInComputerList) {
         for (String compCity : findCitiesInComputerList) {
             if (!resultList.contains(compCity)) {
                 computerScore++;
-                addToList(compCity);
-                return true;
+                resultList.addLast(compCity);
+                return compCity;
             }
         }
-        return false;
+        return "citynotfound";
     }
 
     private boolean isFirstLetterCorrect(String city, String lastCity) {
@@ -34,18 +32,22 @@ class ResultListCity {
 
     public String addToResultCity(String city) {
         if (isExistInList(city)) {
-            return "City already exists";
+            return "Місто вже є у списку, спробуйте інше";
         } else if (city.equalsIgnoreCase("здаюсь")) {
             return "Computer wins!";
         } else if (getResultList().size() > 1 && !isFirstLetterCorrect(city, getResultList().getLast())) {
-            return "Incorrect city";
+            return "Місто повинно починатись на літеру, яка є останньою в останньому слові списку";
         } else if (!isRealCity(city)) {
             return "Not a real city";
         } else {
-            addToList(city);
-            humanScore++;
+
             return city;
         }
+    }
+
+    public void addToResultListByHuman(String city){
+        humanScore++;
+        resultList.addLast(city);
     }
 
     private boolean isRealCity(String city) {
@@ -55,4 +57,6 @@ class ResultListCity {
     public LinkedList<String> getResultList() {
         return resultList;
     }
+
+
 }
