@@ -52,7 +52,7 @@ public class ResultListCity {
 		} else if (getResultList().size() > 1 && !isFirstLetterCorrect(city, getResultList().getLast())) {
 			return "Місто повинно починатись на літеру, яка є останньою в останньому слові списку";
 		} else if (!isRealCity(city)) {
-			return "Not a real city";
+			return "Введіть існуючу назву міста";
 		} else {
 
 			return city;

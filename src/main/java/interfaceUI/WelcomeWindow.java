@@ -17,6 +17,7 @@ public class WelcomeWindow extends JFrame {
 		setLocationRelativeTo(null);
 
 		messageLabel = new JLabel("Натисніть кнопку, щоб розпочати гру");
+
 		messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		startButton = new JButton("Продовжити");
 

@@ -17,7 +17,10 @@ public class MenuWindow extends JFrame {
 	private ComputerCity computerCity;
 	private ResultListCity resultList;
 
+
+
 	public MenuWindow() {
+
 		setTitle("Гра у міста");
 		setSize(400, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,12 +47,14 @@ public class MenuWindow extends JFrame {
 		add(makeMoveButton, BorderLayout.SOUTH);
 	}
 
+
+
 	private void makeMove() {
 		StringBuilder stringBuilder = new StringBuilder();
 		String city = cityTextField.getText();
 
 		String result = resultList.addToResultCity(city);
-		if (result.equals("Місто повинно починатись на літеру, яка є останньою в останньому слові списку") || result.equals("Місто вже є у списку, спробуйте інше") || result.equals("Not a real city")) {
+		if (result.equals("Місто повинно починатись на літеру, яка є останньою в останньому слові списку") || result.equals("Місто вже є у списку, спробуйте інше") || result.equals("Введіть існуючу назву міста")) {
 			JOptionPane.showMessageDialog(this, result, "Помилка", JOptionPane.ERROR_MESSAGE);
 		} else if (result.equals("Computer wins!")) {
 			showGameResult("Комп'ютер переміг!");
