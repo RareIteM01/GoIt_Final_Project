@@ -64,7 +64,7 @@ public class ResultListCity {
 		resultList.addLast(city);
 	}
 
-	private boolean isRealCity(String checkedCity) {
+		private void parseCityData()  {
 		try {
 
 			String filePath = "file:///" + System.getProperty("user.dir") + "/src/main/resources/ukrainian_cities.json";
@@ -73,26 +73,30 @@ public class ResultListCity {
 			InputStream inputStream = url.openStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
 			Gson gson = new Gson();
+			JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
 
-
-			Type collectionType = new TypeToken<Collection<CityList>>(){}.getType();
-			List<CityList> list = gson.fromJson(reader, collectionType);
-
-
-			for (CityList cityList : list) {
-				ArrayList<City> cities = cityList.getCities();
-				for (City city : cities) {
-					 if(city.getName().equalsIgnoreCase(checkedCity)){
-						 return true;
-					 };
-				}
+				for (JsonElement regionElement : jsonArray) {
+					JsonObject regionObject = regionElement.getAsJsonObject();
+					JsonArray citiesArray = regionObject.getAsJsonArray("cities");
+					for (JsonElement cityElement : citiesArray) {
+						JsonObject cityObject = cityElement.getAsJsonObject();
+						String cityName = cityObject.getAsJsonPrimitive("name").getAsString();
+						String regionName = regionObject.getAsJsonPrimitive("name").getAsString();
+						cityRegionMap.put(cityName, regionName);
+					}
 			}
-
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return false;
 	}
+	private boolean isRealCity(String city) {
+		if (cityRegionMap.isEmpty()) {
+			parseCityData();
+		}
+		return cityRegionMap.containsKey(city.toLowerCase());
+	}
+
 
 	public LinkedList<String> getResultList() {
 		return resultList;
