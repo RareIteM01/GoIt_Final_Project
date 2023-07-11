@@ -53,7 +53,6 @@ public class ResultListCity {
 		} else if (!isRealCity(city)) {
 			return "Введіть існуючу назву міста";
 		} else {
-
 			return city;
 		}
 	}
@@ -81,7 +80,7 @@ public class ResultListCity {
 						JsonObject cityObject = cityElement.getAsJsonObject();
 						String cityName = cityObject.getAsJsonPrimitive("name").getAsString();
 						String regionName = regionObject.getAsJsonPrimitive("name").getAsString();
-						cityRegionMap.put(cityName, regionName);
+						cityRegionMap.put(cityName.toLowerCase(), regionName.toLowerCase());
 					}
 			}
 			reader.close();
@@ -93,6 +92,7 @@ public class ResultListCity {
 		if (cityRegionMap.isEmpty()) {
 			parseCityData();
 		}
+		System.out.println(cityRegionMap.containsKey(city.toLowerCase()));
 		return cityRegionMap.containsKey(city.toLowerCase());
 	}
 

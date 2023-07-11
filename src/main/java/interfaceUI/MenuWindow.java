@@ -51,7 +51,7 @@ public class MenuWindow extends JFrame {
 		String city = cityTextField.getText();
 
 		String result = resultList.addToResultCity(city);
-		if (result.equals("Місто повинно починатись на літеру, яка є останньою в останньому слові списку")  || result.equals("Місто вже є у списку, спробуйте інше")) {
+		if (result.equals("Місто повинно починатись на літеру, яка є останньою в останньому слові списку") || result.equals("Місто вже є у списку, спробуйте інше") || result.equals("Введіть існуючу назву міста")) {
 			JOptionPane.showMessageDialog(this, result, "Помилка", JOptionPane.ERROR_MESSAGE);
 		} else if (result.equals("Computer wins!")) {
 			showGameResult("Комп'ютер переміг!");
@@ -64,14 +64,18 @@ public class MenuWindow extends JFrame {
 
 			} else {
 				for (int i = 0; i < resultList.getResultList().size(); i++) {
-					stringBuilder.append(resultList.getResultList().get(i)).append(", ");
+
+						stringBuilder.append(resultList.getResultList().get(i));
+					if (i != resultList.getResultList().size()-1) {
+						stringBuilder.append(", ");
+					}
+
 				}
 				computerResponseResultList.setText(stringBuilder.toString());
 			}
 		}
-				cityTextField.setText("");
+		cityTextField.setText("");
 	}
-
 
 
 	private void showGameResult(String message) {
